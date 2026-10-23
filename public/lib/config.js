@@ -42,30 +42,35 @@ export const BANDS = [
 // Verdict: the first row whose starting percentage the overall score reaches.
 //
 //   Overall score   Verdict
-//   70 to 100       Lean In
-//   45 to 69        Sharpen
-//   0 to 44         Reconsider
+//   65 to 100       Lean In
+//   35 to 64        Sharpen
+//   0 to 34         Reconsider
+//
+// These match Kelli's Niche Evaluation Scoring Sheet: 18 out of 25 and above
+// is "Move forward", 12 to 17 is "Potential, with gaps", below 12 is
+// "Something fundamental is missing". Her sheet scores 1 to 5 per factor, so
+// it starts at 5, not 0: (18 - 5) / 20 = 65%, (12 - 5) / 20 = 35%.
 //
 // Worked example: factors of 33%, 44%, 78%, 67% and 100% average 64.4,
 // which rounds to 64, which is Sharpen.
 export const VERDICTS = [
   {
     name: "Lean In",
-    fromPercent: 70,
-    // PLACEHOLDER: Kelli to write this line.
-    line: "[Placeholder: Kelli to write the Lean In line]",
+    fromPercent: 65,
+    // From Kelli's scoring sheet
+    line: "This has the foundations of a strong niche. The gaps that exist are manageable. Stop deliberating and start building.",
   },
   {
     name: "Sharpen",
-    fromPercent: 45,
-    // PLACEHOLDER: Kelli to write this line.
-    line: "[Placeholder: Kelli to write the Sharpen line]",
+    fromPercent: 35,
+    // From Kelli's scoring sheet
+    line: "Look at your lowest scoring factor. What would need to change to improve it by one point? Come back in 30 days with real data, not assumptions.",
   },
   {
     name: "Reconsider",
     fromPercent: 0,
-    // PLACEHOLDER: Kelli to write this line.
-    line: "[Placeholder: Kelli to write the Reconsider line]",
+    // From Kelli's scoring sheet
+    line: "This is not necessarily a no. It is a pause. Identify what is weakest before committing significant time and energy.",
   },
 ];
 

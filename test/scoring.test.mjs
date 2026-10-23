@@ -50,10 +50,10 @@ test("mixed set, hand calculated, with factors on the band boundaries", () => {
 });
 
 test("verdict boundaries", () => {
-  assert.equal(verdictFor(70).name, "Lean In");
-  assert.equal(verdictFor(69).name, "Sharpen");
-  assert.equal(verdictFor(45).name, "Sharpen");
-  assert.equal(verdictFor(44).name, "Reconsider");
+  assert.equal(verdictFor(65).name, "Lean In");
+  assert.equal(verdictFor(64).name, "Sharpen");
+  assert.equal(verdictFor(35).name, "Sharpen");
+  assert.equal(verdictFor(34).name, "Reconsider");
 });
 
 test("band boundaries in points", () => {

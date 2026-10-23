@@ -42,11 +42,11 @@ The overall score is the average of the five factor percentages, rounded.
 
 | Overall score | Verdict |
 |---|---|
-| 70 to 100 | Lean In |
-| 45 to 69 | Sharpen |
-| 0 to 44 | Reconsider |
+| 65 to 100 | Lean In |
+| 35 to 64 | Sharpen |
+| 0 to 34 | Reconsider |
 
-These were assumptions because the ScoreApp numbers weren't captured. Change them in `public/lib/config.js`. Run `npm test` after any change: the tests will fail if the expected results no longer match, so update the expected numbers in `test/scoring.test.mjs` to your new rules.
+The verdict cut-offs and lines come from Kelli's Niche Evaluation Scoring Sheet (18 and 12 out of 25, converted to percentages). The band cut-offs were assumptions because the ScoreApp numbers weren't captured. Change them in `public/lib/config.js`. Run `npm test` after any change: the tests will fail if the expected results no longer match, so update the expected numbers in `test/scoring.test.mjs` to your new rules.
 
 ## Results links
 
@@ -104,7 +104,7 @@ To try it on your own computer: `npm install`, `npm run dev`, then open http://l
 
 ## Wording to check
 
-Lines marked `DRAFT` in `public/lib/config.js` and `src/report-copy.js` were written for the build because the brief didn't supply them: the intro screen, the niche hint, the "Get your full report" box, the follow-up consent line, and the email subject, greeting and labels. The three verdict lines are marked `PLACEHOLDER` and show on screen as placeholders until written.
+Lines marked `DRAFT` in `public/lib/config.js` and `src/report-copy.js` were written for the build because the brief didn't supply them: the intro screen, the niche hint, the "Get your full report" box, the follow-up consent line, and the email subject, greeting and labels.
 
 ## Good to know
 
