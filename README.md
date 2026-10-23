@@ -10,7 +10,7 @@ It is a standalone app. It does not scan websites and has no connection to any o
 |---|---|
 | Their niche, quoted | Everything on screen |
 | Overall score (donut) and verdict | Kelli's full paragraph for each factor |
-| Each factor: percentage, band, and the first sentence of Kelli's paragraph | Each question, the answer they picked and the points it scored |
+| Each factor: percentage, band, and the first sentence of Kelli's paragraph | Each question and the answer they picked (no points shown) |
 | Booking call section | Booking call section |
 
 The full paragraphs live only on the server (`src/report-copy.js`), so they never reach the browser.

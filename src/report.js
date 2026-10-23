@@ -1,6 +1,6 @@
 // Builds the full report that GHL sends as the email.
 // Email-safe HTML: tables, inline styles, no scripts, no SVG.
-import { FACTORS, QUESTIONS, POINTS, COPY } from "../public/lib/config.js";
+import { FACTORS, QUESTIONS, COPY } from "../public/lib/config.js";
 import { scoreAnswers } from "../public/lib/scoring.js";
 import { FACTOR_COPY, EMAIL_COPY } from "./report-copy.js";
 
@@ -53,7 +53,7 @@ export function buildReport(input) {
       return `
         <tr><td style="padding:12px 0 0">
           <p style="margin:0 0 4px;font:600 14px/1.45 ${FONT};color:${C.ink}">Q${n}. ${escapeHtml(q.text)}</p>
-          <p style="margin:0;font:400 14px/1.45 ${FONT};color:${C.muted}">${escapeHtml(EMAIL_COPY.answerLabel)}: ${escapeHtml(q.answers[a])} <strong style="color:${C.ink};white-space:nowrap">(${POINTS[a]} of ${Math.max(...POINTS)} points)</strong></p>
+          <p style="margin:0;font:400 14px/1.45 ${FONT};color:${C.muted}">${escapeHtml(EMAIL_COPY.answerLabel)}: ${escapeHtml(q.answers[a])}</p>
         </td></tr>`;
     }).join("");
     return `
@@ -140,7 +140,7 @@ export function buildReport(input) {
         `${f.name.toUpperCase()}: ${f.percent}% (${f.band})`,
         FACTOR_COPY[f.key][f.band],
         `${EMAIL_COPY.breakdownLabel}:`,
-        ...def.questions.map((n) => `  Q${n}. ${QUESTIONS[n - 1].text}\n  ${EMAIL_COPY.answerLabel}: ${QUESTIONS[n - 1].answers[answers[n - 1]]} (${POINTS[answers[n - 1]]} of ${Math.max(...POINTS)} points)`),
+        ...def.questions.map((n) => `  Q${n}. ${QUESTIONS[n - 1].text}\n  ${EMAIL_COPY.answerLabel}: ${QUESTIONS[n - 1].answers[answers[n - 1]]}`),
         "",
       ];
     }),

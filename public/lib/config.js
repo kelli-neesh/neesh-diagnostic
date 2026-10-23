@@ -296,7 +296,7 @@ export const COPY = {
   reportHeading: "Get your full report",
   // DRAFT
   reportLine:
-    "We'll email you the full read on each factor, what to do next, and how every answer you gave was scored.",
+    "We'll email you the full read on each factor, what to do next, and every answer you gave.",
   // DRAFT, adapted from Kelli's consent line now that consent is optional
   consentLabel: "Send me follow-up emails from Neesh. I can unsubscribe at any time.",
   // DRAFT

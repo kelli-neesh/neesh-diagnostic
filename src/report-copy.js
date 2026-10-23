@@ -38,13 +38,13 @@ export const EMAIL_COPY = {
   // DRAFT. {first_name} is replaced with their first name.
   greeting: "Hi {first_name},",
   // DRAFT
-  intro: "Here is your full NEESH Diagnostic report: the read on each factor, what to do next, and how each of your answers was scored.",
+  intro: "Here is your full NEESH Diagnostic report: the read on each factor, what to do next, and the answers you gave.",
   // DRAFT
   nicheLabel: "Your niche",
   // DRAFT
   overallLabel: "Overall score",
   // DRAFT
-  breakdownLabel: "How your answers scored",
+  breakdownLabel: "Your answers",
   // DRAFT
   answerLabel: "Your answer",
   // DRAFT
