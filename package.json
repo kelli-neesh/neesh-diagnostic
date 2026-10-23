@@ -1,0 +1,16 @@
+{
+  "name": "neesh-diagnostic",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The NEESH Diagnostic. A niche strategy questionnaire for UK accounting firm owners.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "node --test test/*.test.mjs",
+    "sample-report": "node scripts/sample-report.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}
