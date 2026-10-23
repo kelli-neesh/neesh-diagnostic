@@ -94,3 +94,33 @@ test("every verdict has an overall statement, with no em dashes", () => {
     assert.ok(!OVERALL_STATEMENTS[v.name].includes(String.fromCharCode(0x2014)));
   }
 });
+
+test("Commercial Value rule: Low Commercial Value can't get Lean In", () => {
+  // Commercial 3 of 9 (33%, Low), the other four 7 or 8 of 9: average 68%
+  const answers = [0, 3, 3, 0, 0, 2, 0, 0, 1, 0, 0, 1, 0, 0, 2];
+  const s = scoreAnswers(answers);
+  assert.equal(s.factors[0].band, "Low");
+  assert.ok(s.overall >= 65, `overall ${s.overall}`);
+  assert.equal(s.verdict.name, "Sharpen");
+  assert.ok(s.verdict.capNote.includes("Commercial Value"));
+});
+
+test("Commercial Value rule: Medium Commercial Value can still get Lean In", () => {
+  const answers = [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  const s = scoreAnswers(answers);
+  assert.equal(s.factors[0].band, "Medium");
+  assert.equal(s.verdict.name, "Lean In");
+  assert.equal(s.verdict.capNote, "");
+});
+
+test("every factor has validation guidance for Low and Medium, and a High line", async () => {
+  const { validationFor } = await import("../src/report-copy.js");
+  for (const f of FACTORS) {
+    for (const band of ["High", "Medium", "Low"]) {
+      const t = validationFor({ key: f.key, name: f.name, band });
+      assert.ok(t.startsWith(f.name), `${f.key} ${band}`);
+      assert.ok(!t.includes("undefined"));
+      assert.ok(!t.includes(String.fromCharCode(0x2014)));
+    }
+  }
+});

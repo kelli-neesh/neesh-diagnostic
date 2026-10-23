@@ -2,7 +2,7 @@
 // Email-safe HTML: tables, inline styles, no scripts, no SVG.
 import { FACTORS, QUESTIONS, COPY } from "../public/lib/config.js";
 import { scoreAnswers } from "../public/lib/scoring.js";
-import { FACTOR_COPY, EMAIL_COPY, OVERALL_STATEMENTS } from "./report-copy.js";
+import { FACTOR_COPY, EMAIL_COPY, OVERALL_STATEMENTS, validationFor } from "./report-copy.js";
 
 const C = {
   wine: "#640718",
@@ -66,6 +66,10 @@ export function buildReport(input) {
             </tr></table>
             <div style="padding:12px 0 4px">${bar(f.percent)}</div>
             <p style="margin:14px 0 0;font:400 16px/1.6 ${FONT};color:${C.ink}">${escapeHtml(FACTOR_COPY[f.key][f.band])}</p>
+            <div style="margin-top:16px;padding:16px 18px;background:${C.bg};border-left:4px solid ${C.chip[f.band]};border-radius:8px">
+              <p style="margin:0 0 6px;font:700 12px/1 ${FONT};letter-spacing:.12em;text-transform:uppercase;color:${C.muted}">${escapeHtml(EMAIL_COPY.validationLabel)}</p>
+              <p style="margin:0;font:400 15px/1.6 ${FONT};color:${C.ink}">${escapeHtml(validationFor(f))}</p>
+            </div>
           </td></tr>
           <tr><td style="padding:8px 22px 22px">
             <p style="margin:12px 0 0;font:700 12px/1 ${FONT};letter-spacing:.12em;text-transform:uppercase;color:${C.muted}">${escapeHtml(EMAIL_COPY.breakdownLabel)}</p>
@@ -101,7 +105,8 @@ export function buildReport(input) {
         <p style="margin:0;font:700 12px/1 ${FONT};letter-spacing:.12em;text-transform:uppercase;color:${C.muted}">${escapeHtml(EMAIL_COPY.overallLabel)}</p>
         <p style="margin:6px 0 0;font:800 56px/1 ${FONT};color:${C.wine}">${s.overall}%</p>
         <p style="margin:10px 0 0;font:800 22px/1.2 ${FONT};color:${C.forest}">${escapeHtml(s.verdict.name)}</p>
-        <p style="margin:6px 0 0;font:400 15px/1.5 ${FONT};color:${C.ink}">${escapeHtml(s.verdict.line)}</p>
+        <p style="margin:6px 0 0;font:400 15px/1.5 ${FONT};color:${C.ink}">${escapeHtml(s.verdict.line)}</p>${s.verdict.capNote ? `
+        <p style="margin:8px 0 0;font:600 14px/1.5 ${FONT};color:${C.wine}">${escapeHtml(s.verdict.capNote)}</p>` : ""}
       </td>
       <td style="vertical-align:top">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${factorRows}</table>
@@ -136,7 +141,7 @@ export function buildReport(input) {
     "",
     `${EMAIL_COPY.nicheLabel}: "${niche}"`,
     "",
-    `${EMAIL_COPY.overallLabel}: ${s.overall}%. ${s.verdict.name}. ${s.verdict.line}`,
+    `${EMAIL_COPY.overallLabel}: ${s.overall}%. ${s.verdict.name}. ${s.verdict.line}${s.verdict.capNote ? " " + s.verdict.capNote : ""}`,
     "",
     `${EMAIL_COPY.overallStatementLabel}:`,
     OVERALL_STATEMENTS[s.verdict.name],
@@ -146,6 +151,7 @@ export function buildReport(input) {
       return [
         `${f.name.toUpperCase()}: ${f.percent}% (${f.band})`,
         FACTOR_COPY[f.key][f.band],
+        `${EMAIL_COPY.validationLabel}: ${validationFor(f)}`,
         `${EMAIL_COPY.breakdownLabel}:`,
         ...def.questions.map((n) => `  Q${n}. ${QUESTIONS[n - 1].text}\n  ${EMAIL_COPY.answerLabel}: ${QUESTIONS[n - 1].answers[answers[n - 1]]}`),
         "",

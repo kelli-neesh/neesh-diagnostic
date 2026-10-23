@@ -1,5 +1,5 @@
 // Scoring for the NEESH Diagnostic. All numbers come from config.js.
-import { FACTORS, POINTS, BANDS, VERDICTS, QUESTIONS, HEADLINES } from "./config.js";
+import { FACTORS, POINTS, BANDS, VERDICTS, QUESTIONS, HEADLINES, LEAN_IN_NEEDS_COMMERCIAL, COMMERCIAL_CAP_LINE } from "./config.js";
 
 const MAX_PER_QUESTION = Math.max(...POINTS);
 
@@ -42,6 +42,14 @@ export function scoreAnswers(answers) {
   });
 
   const overall = Math.round(factors.reduce((s, f) => s + f.percent, 0) / factors.length);
-  const verdict = verdictFor(overall);
-  return { factors, overall, verdict: { name: verdict.name, line: verdict.line } };
+  let verdict = verdictFor(overall);
+  // Commercial Value rule: no Lean In unless Commercial Value reaches the set band.
+  const order = BANDS.map((b) => b.name).reverse(); // Low, Medium, High
+  const commercial = factors.find((f) => f.key === "commercial_value");
+  let capNote = "";
+  if (verdict.name === "Lean In" && order.indexOf(commercial.band) < order.indexOf(LEAN_IN_NEEDS_COMMERCIAL)) {
+    verdict = VERDICTS.find((v) => v.name === "Sharpen");
+    capNote = COMMERCIAL_CAP_LINE;
+  }
+  return { factors, overall, verdict: { name: verdict.name, line: verdict.line, capNote } };
 }

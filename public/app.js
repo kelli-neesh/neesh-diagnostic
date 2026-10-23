@@ -187,7 +187,7 @@ function renderResults(fromLink) {
     <section class="verdict" aria-label="Verdict">
       <span class="lab">Your verdict</span>
       <span class="name">${esc(s.verdict.name)}</span>
-      <p>${esc(s.verdict.line)}</p>
+      <p>${esc(s.verdict.line)}</p>${s.verdict.capNote ? `<p>${esc(s.verdict.capNote)}</p>` : ""}
     </section>
 
     <section class="cards" aria-label="Factor results">

@@ -35,12 +35,43 @@ export const FACTOR_COPY = {
 // gaps", "Something fundamental is missing") for Kelli to edit.
 export const OVERALL_STATEMENTS = {
   "Lean In":
-    "Move forward. Your niche holds up across the five factors that matter: commercial value, reach, experience, enjoyment and demand. That does not make it perfect, and the reads below show where it is thinner. But the foundations are there, and more deliberating will not make them stronger. Commit to it in public. Say who you serve on your website and on LinkedIn, and start turning the gaps into proof. Focus compounds, and the sooner you start, the sooner it pays.",
+    "Move forward. Your niche holds up well across all five factors. It isn't perfect, and the sections below show where it is weaker, but the foundations are there, and more thinking won't make them stronger. Commit to it in public. Say who you serve on your website and on LinkedIn, and start building proof where you are weakest. Focus compounds. The sooner you start, the sooner it pays.",
   Sharpen:
-    "There is potential here, with gaps. Your niche has real strengths, but at least one factor is holding it back, and that is where your attention goes first. Don't abandon the niche and don't commit to it blindly. Find your lowest scoring factor below, decide what evidence would move it, and go and get that evidence: conversations with clients in the niche, a closer look at the numbers, a test of where the audience gathers. Then run the Diagnostic again.",
+    "There is potential here, with gaps. Your niche has real strengths, but at least one factor is holding it back. Don't drop the niche, and don't commit to it blindly. Find your lowest scoring factor below and work out what would improve it. Then go and get real evidence: talk to businesses in the niche, check the numbers, and find out where they gather. Take the Diagnostic again with what you've learned.",
   Reconsider:
-    "Something fundamental is missing. That is not a judgement on you or on the idea. It is a read on the evidence you have today. Committing your marketing, pricing and time to this niche now carries more risk than it needs to. Read the factors below and find the weakest. Ask whether it can realistically change, or whether a related niche, one where you already have more experience, demand or enjoyment, would serve you better. A pause now saves a costly change of direction later.",
+    "Something fundamental is missing. This isn't a judgement on you or your idea. It's a read on the evidence you have today. Putting your marketing, pricing and time behind this niche now is a bigger risk than it needs to be. Find your weakest factor below and ask whether it can realistically change. If it can't, look at a related niche where you already have more experience, demand or enjoyment. Pausing now costs far less than changing direction later.",
 };
+
+// "How to test this": shown under each factor in the report email.
+// Approved by Kelli 23 Oct 2026. The aim is to show how to validate a niche,
+// not to dismiss it.
+// Low and Medium factors get an opening line plus the guidance below.
+// High factors get the short HIGH line instead.
+export const VALIDATION = {
+  opener: {
+    Low: "{factor} is holding your score back.",
+    Medium: "{factor} is not yet a clear strength.",
+  },
+  // DRAFT
+  high: "{factor} scores high, which is a great sign. The Diagnostic only has your answers to go on, so keep checking this against what you see in real conversations with the niche.",
+  guidance: {
+    commercial_value:
+      "That doesn't always mean the niche can't pay. It can mean the way you deliver doesn't fit what they can pay. Before you rule it out, test a different model: a fixed-fee package, a group programme, or a narrower service that solves one expensive problem well. Ask five businesses in the niche what that problem costs them today. If the numbers still don't work, you have your answer.",
+    reach:
+      "A niche that looks hard to reach is often one you haven't looked at closely enough yet. Spend two weeks looking: trade bodies, suppliers, the software they use, LinkedIn and Facebook groups, local events, and the advisers they already trust. Ask your existing clients in the niche where they go for ideas. If you still can't find anywhere they gather, reaching them will stay slow and expensive.",
+    experience:
+      "It can be built faster than most people think. Look at the clients you already have: are any of them close to this niche? Write up what you've learned, interview two or three businesses in the niche about how they work, or partner with someone who already serves them. Proof you can show is worth more than years you can claim.",
+    enjoyment:
+      "Take this one seriously, because you'll live with this niche every day. Notice what drains you. Is it the clients, the type of work, or the way you deliver it? Changing one of those can be enough. If it's the clients themselves, no strategy will fix that.",
+    demand:
+      "Check it before you trust it. Count the businesses: Companies House, trade body membership numbers and industry reports will tell you how many there are in the area you serve. Then ask a handful whether they'd pay for the help you have in mind. A small market can still work if the need is ongoing and the value is high. A shrinking one rarely does.",
+  },
+};
+
+export function validationFor(f) {
+  if (f.band === "High") return VALIDATION.high.replace("{factor}", f.name);
+  return VALIDATION.opener[f.band].replace("{factor}", f.name) + " " + VALIDATION.guidance[f.key];
+}
 
 // Wording for the report email. DRAFT lines were written for the build;
 // Kelli to check.
@@ -57,6 +88,8 @@ export const EMAIL_COPY = {
   overallLabel: "Overall score",
   // DRAFT
   overallStatementLabel: "What this means for your niche",
+  // DRAFT
+  validationLabel: "How to test this",
   // DRAFT
   breakdownLabel: "Your answers",
   // DRAFT

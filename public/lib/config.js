@@ -74,6 +74,14 @@ export const VERDICTS = [
   },
 ];
 
+// COMMERCIAL VALUE RULE: Lean In needs Commercial Value of at least this band.
+// If Commercial Value is below it, the verdict drops to Sharpen, whatever the
+// overall score. Kelli: "commercial value is that important".
+export const LEAN_IN_NEEDS_COMMERCIAL = "Medium";
+// DRAFT. Shown with the verdict when the rule applies.
+export const COMMERCIAL_CAP_LINE =
+  "Your overall score would put you in Lean In, but your Commercial Value score holds you at Sharpen. A niche has to work commercially before you commit to it.";
+
 // The most characters kept from "Describe your niche". It travels in the
 // results link, so it is capped to keep links a sensible length.
 export const NICHE_MAX_CHARS = 300;
