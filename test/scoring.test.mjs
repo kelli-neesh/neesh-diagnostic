@@ -29,11 +29,11 @@ test("all last answers: every factor 0%, Low, overall 0%, Reconsider", () => {
 test("mixed set, hand calculated, with factors on the band boundaries", () => {
   // Answer positions: 0 = strongest (3 points) ... 3 = weakest (0 points)
   const answers = [
-    0, 3, 3, // Experience: 3 + 0 + 0 = 3 of 9 = 33%, Low (top of Low)
-    0, 2, 3, // Demand:     3 + 1 + 0 = 4 of 9 = 44%, Medium (bottom of Medium)
-    0, 0, 2, // Reach:      3 + 3 + 1 = 7 of 9 = 78%, High (bottom of High)
     1, 1, 1, // Commercial: 2 + 2 + 2 = 6 of 9 = 67%, Medium (top of Medium)
+    0, 0, 2, // Reach:      3 + 3 + 1 = 7 of 9 = 78%, High (bottom of High)
+    0, 3, 3, // Experience: 3 + 0 + 0 = 3 of 9 = 33%, Low (top of Low)
     0, 0, 0, // Enjoyment:  9 of 9 = 100%, High
+    0, 2, 3, // Demand:     3 + 1 + 0 = 4 of 9 = 44%, Medium (bottom of Medium)
   ];
   const s = scoreAnswers(answers);
   const got = Object.fromEntries(s.factors.map((f) => [f.key, [f.points, f.percent, f.band]]));
@@ -72,6 +72,11 @@ test("15 questions, four answers each, every question in exactly one factor", ()
   for (const q of QUESTIONS) assert.equal(q.answers.length, 4);
   const used = FACTORS.flatMap((f) => f.questions).sort((a, b) => a - b);
   assert.deepEqual(used, Array.from({ length: 15 }, (_, i) => i + 1));
+});
+
+test("factors run in CREED order, each with the next three questions", () => {
+  assert.equal(FACTORS.map((f) => f.name[0]).join(""), "CREED");
+  FACTORS.forEach((f, i) => assert.deepEqual(f.questions, [i * 3 + 1, i * 3 + 2, i * 3 + 3]));
 });
 
 test("free headlines are the first sentence of Kelli's full paragraphs", () => {

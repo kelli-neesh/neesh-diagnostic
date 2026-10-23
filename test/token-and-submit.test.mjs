@@ -5,7 +5,7 @@ import { join } from "node:path";
 import { encodeToken, decodeToken } from "../public/lib/token.js";
 import worker from "../src/worker.js";
 
-const answers = [0, 3, 3, 0, 2, 3, 0, 0, 2, 1, 1, 1, 0, 0, 0];
+const answers = [1, 1, 1, 0, 0, 2, 0, 3, 3, 0, 0, 0, 0, 2, 3]; // CREED order
 
 test("token round trip keeps answers and niche, including accents and emoji", () => {
   const niche = "Independent dental practices in the Midlands, café owners too 🦷";

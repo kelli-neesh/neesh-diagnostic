@@ -4,16 +4,16 @@
 // so they are never sent to the browser.
 
 // ---------------------------------------------------------------------------
-// FACTORS: shown in this order everywhere.
+// FACTORS: shown in this order everywhere. The first letters spell CREED.
 // "questions" lists which question numbers count towards each factor.
 // The mapping was inferred by theme. Change the numbers to remap.
 // ---------------------------------------------------------------------------
 export const FACTORS = [
-  { key: "experience",       name: "Experience",       questions: [1, 2, 3] },
-  { key: "demand",           name: "Demand",           questions: [4, 5, 6] },
-  { key: "reach",            name: "Reach",            questions: [7, 8, 9] },
-  { key: "commercial_value", name: "Commercial Value", questions: [10, 11, 12] },
-  { key: "enjoyment",        name: "Enjoyment",        questions: [13, 14, 15] },
+  { key: "commercial_value", name: "Commercial Value", questions: [1, 2, 3] },
+  { key: "reach",            name: "Reach",            questions: [4, 5, 6] },
+  { key: "experience",       name: "Experience",       questions: [7, 8, 9] },
+  { key: "enjoyment",        name: "Enjoyment",        questions: [10, 11, 12] },
+  { key: "demand",           name: "Demand",           questions: [13, 14, 15] },
 ];
 
 // ---------------------------------------------------------------------------
@@ -117,96 +117,6 @@ export const HEADLINES = {
 export const QUESTIONS = [
   {
     n: 1,
-    text: "How familiar are you with the way businesses in your chosen niche actually operate day to day?",
-    answers: [
-      "I understand the patterns, pressures and decisions they face without needing them explained.",
-      "I have reasonable familiarity but there are gaps I'm still filling.",
-      "I've worked with a few but I'm still learning the landscape.",
-      "I don't have direct experience yet. I'm drawn to this niche but haven't worked in it.",
-    ],
-  },
-  {
-    n: 2,
-    text: "How does your experience in this niche compare to a generalist accountant approaching the same client?",
-    answers: [
-      "Meaningfully better. I understand the context, the language and the common mistakes.",
-      "Somewhat better in areas I've focused on, less so in others.",
-      "Roughly similar at this stage, though I'm developing.",
-      "Hard to say. I haven't yet tested the difference in practice.",
-    ],
-  },
-  {
-    n: 3,
-    text: "When a client in your chosen niche describes a problem, how quickly can you add value?",
-    answers: [
-      "Immediately. I recognise the problem and know where to start without needing context.",
-      "Fairly quickly, though some problems still require more background than I'd like.",
-      "I can get there, but it takes more time than it would for a specialist.",
-      "I'm still building the knowledge base. Most problems require significant groundwork first.",
-    ],
-  },
-  {
-    n: 4,
-    text: "How many businesses fitting your niche exist in the market you intend to serve?",
-    answers: [
-      "Enough to sustain and grow a firm. New businesses enter this space regularly.",
-      "A reasonable number, though I haven't fully mapped the size of the opportunity.",
-      "Fewer than I'd like. The market exists but it's not large.",
-      "I'm not sure. I haven't researched the market size yet.",
-    ],
-  },
-  {
-    n: 5,
-    text: "Is your chosen niche growing, stable, or contracting?",
-    answers: [
-      "Growing. New businesses are entering the space and demand for advice is increasing.",
-      "Stable. The market isn't shrinking but it isn't expanding dramatically either.",
-      "Hard to read. There are signals in both directions.",
-      "Contracting or unclear. I have concerns about the long-term trajectory.",
-    ],
-  },
-  {
-    n: 6,
-    text: "Are the problems your niche faces ongoing, or do they tend to be one-off?",
-    answers: [
-      "Ongoing. The complexity, regulation or growth patterns create recurring financial needs.",
-      "Mostly ongoing, with some one-off elements depending on the client's stage.",
-      "A mix. Some recurring needs but not as consistently as I'd want.",
-      "Largely one-off at this stage. I haven't identified the recurring need clearly yet.",
-    ],
-  },
-  {
-    n: 7,
-    text: "Does your chosen niche have existing communities, associations, events or publications you could show up in?",
-    answers: [
-      "Yes. There are active spaces where this audience already gathers and conversations already happen.",
-      "Some. There are spaces but they're not particularly active or easy to access.",
-      "Limited. I've identified a few but the infrastructure is thin.",
-      "Not that I've found. The community doesn't seem to have obvious gathering points.",
-    ],
-  },
-  {
-    n: 8,
-    text: "How straightforward would it be to get in front of your target niche without relying on referrals?",
-    answers: [
-      "Straightforward. There are clear channels, events and communities I could build presence in.",
-      "Possible but it would take time and experimentation to find what works.",
-      "Difficult. The audience is hard to reach without warm introductions.",
-      "I don't yet have a clear route to reach them deliberately.",
-    ],
-  },
-  {
-    n: 9,
-    text: "Are other professional services already serving this niche, creating referral networks you could become part of?",
-    answers: [
-      "Yes. Lawyers, advisers or consultants already serve this group and referral relationships would be natural.",
-      "Some. There are adjacent professionals but the networks aren't well established.",
-      "A few, though the referral ecosystem is underdeveloped.",
-      "Not that I'm aware of. This niche doesn't seem to have an established professional services community around it.",
-    ],
-  },
-  {
-    n: 10,
     text: "Do businesses in your chosen niche typically have the means and willingness to invest in professional advice?",
     answers: [
       "Yes. The financial stakes are high enough that good advice is genuinely valued and paid for.",
@@ -216,7 +126,7 @@ export const QUESTIONS = [
     ],
   },
   {
-    n: 11,
+    n: 2,
     text: "Does working with this niche give you the opportunity to move beyond compliance into genuine advisory work?",
     answers: [
       "Yes. The decisions they face create natural opportunities for strategic advice.",
@@ -226,7 +136,7 @@ export const QUESTIONS = [
     ],
   },
   {
-    n: 12,
+    n: 3,
     text: "How does your pricing power compare when serving this niche versus a general client base?",
     answers: [
       "Stronger. Specialism commands a premium and clients accept it because the value is clear.",
@@ -236,7 +146,67 @@ export const QUESTIONS = [
     ],
   },
   {
-    n: 13,
+    n: 4,
+    text: "Does your chosen niche have existing communities, associations, events or publications you could show up in?",
+    answers: [
+      "Yes. There are active spaces where this audience already gathers and conversations already happen.",
+      "Some. There are spaces but they're not particularly active or easy to access.",
+      "Limited. I've identified a few but the infrastructure is thin.",
+      "Not that I've found. The community doesn't seem to have obvious gathering points.",
+    ],
+  },
+  {
+    n: 5,
+    text: "How straightforward would it be to get in front of your target niche without relying on referrals?",
+    answers: [
+      "Straightforward. There are clear channels, events and communities I could build presence in.",
+      "Possible but it would take time and experimentation to find what works.",
+      "Difficult. The audience is hard to reach without warm introductions.",
+      "I don't yet have a clear route to reach them deliberately.",
+    ],
+  },
+  {
+    n: 6,
+    text: "Are other professional services already serving this niche, creating referral networks you could become part of?",
+    answers: [
+      "Yes. Lawyers, advisers or consultants already serve this group and referral relationships would be natural.",
+      "Some. There are adjacent professionals but the networks aren't well established.",
+      "A few, though the referral ecosystem is underdeveloped.",
+      "Not that I'm aware of. This niche doesn't seem to have an established professional services community around it.",
+    ],
+  },
+  {
+    n: 7,
+    text: "How familiar are you with the way businesses in your chosen niche actually operate day to day?",
+    answers: [
+      "I understand the patterns, pressures and decisions they face without needing them explained.",
+      "I have reasonable familiarity but there are gaps I'm still filling.",
+      "I've worked with a few but I'm still learning the landscape.",
+      "I don't have direct experience yet. I'm drawn to this niche but haven't worked in it.",
+    ],
+  },
+  {
+    n: 8,
+    text: "How does your experience in this niche compare to a generalist accountant approaching the same client?",
+    answers: [
+      "Meaningfully better. I understand the context, the language and the common mistakes.",
+      "Somewhat better in areas I've focused on, less so in others.",
+      "Roughly similar at this stage, though I'm developing.",
+      "Hard to say. I haven't yet tested the difference in practice.",
+    ],
+  },
+  {
+    n: 9,
+    text: "When a client in your chosen niche describes a problem, how quickly can you add value?",
+    answers: [
+      "Immediately. I recognise the problem and know where to start without needing context.",
+      "Fairly quickly, though some problems still require more background than I'd like.",
+      "I can get there, but it takes more time than it would for a specialist.",
+      "I'm still building the knowledge base. Most problems require significant groundwork first.",
+    ],
+  },
+  {
+    n: 10,
     text: "How do you feel after a working session focused on clients in this niche?",
     answers: [
       "Energised. The work is genuinely interesting and the conversations leave me thinking.",
@@ -246,7 +216,7 @@ export const QUESTIONS = [
     ],
   },
   {
-    n: 14,
+    n: 11,
     text: "How naturally does curiosity about this niche show up for you outside of client work?",
     answers: [
       "Naturally. I find myself reading about it, noticing relevant news and thinking about it without prompting.",
@@ -256,13 +226,43 @@ export const QUESTIONS = [
     ],
   },
   {
-    n: 15,
+    n: 12,
     text: "If you were serving only this type of client for the next three years, how would that feel?",
     answers: [
       "Good. The prospect of going deeper into this niche feels right, not limiting.",
       "Probably fine, though I have some reservations I haven't fully resolved.",
       "Uncertain. The idea is appealing in theory but I'm not sure in practice.",
       "Uncomfortable. Committing to this niche for that long doesn't feel sustainable.",
+    ],
+  },
+  {
+    n: 13,
+    text: "How many businesses fitting your niche exist in the market you intend to serve?",
+    answers: [
+      "Enough to sustain and grow a firm. New businesses enter this space regularly.",
+      "A reasonable number, though I haven't fully mapped the size of the opportunity.",
+      "Fewer than I'd like. The market exists but it's not large.",
+      "I'm not sure. I haven't researched the market size yet.",
+    ],
+  },
+  {
+    n: 14,
+    text: "Is your chosen niche growing, stable, or contracting?",
+    answers: [
+      "Growing. New businesses are entering the space and demand for advice is increasing.",
+      "Stable. The market isn't shrinking but it isn't expanding dramatically either.",
+      "Hard to read. There are signals in both directions.",
+      "Contracting or unclear. I have concerns about the long-term trajectory.",
+    ],
+  },
+  {
+    n: 15,
+    text: "Are the problems your niche faces ongoing, or do they tend to be one-off?",
+    answers: [
+      "Ongoing. The complexity, regulation or growth patterns create recurring financial needs.",
+      "Mostly ongoing, with some one-off elements depending on the client's stage.",
+      "A mix. Some recurring needs but not as consistently as I'd want.",
+      "Largely one-off at this stage. I haven't identified the recurring need clearly yet.",
     ],
   },
 ];
@@ -276,7 +276,7 @@ export const COPY = {
   // DRAFT
   introHeading: "The NEESH Diagnostic",
   // DRAFT
-  introLine: "Test your chosen niche against five factors: experience, demand, reach, commercial value and enjoyment.",
+  introLine: "Test your chosen niche against five factors: commercial value, reach, experience, enjoyment and demand.",
   // DRAFT
   introTime: "15 questions. About 5 minutes.",
   // DRAFT

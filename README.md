@@ -30,6 +30,8 @@ The full paragraphs live only on the server (`src/report-copy.js`), so they neve
 
 ## How scoring works
 
+The five factors run in CREED order everywhere, questions included: Commercial Value (questions 1 to 3), Reach (4 to 6), Experience (7 to 9), Enjoyment (10 to 12), Demand (13 to 15).
+
 Each answer scores 3, 2, 1 or 0 points, strongest first. Each factor has three questions, so 0 to 9 points.
 
 | Points out of 9 | Band | Shows as |
