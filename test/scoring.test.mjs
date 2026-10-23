@@ -2,7 +2,8 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { scoreAnswers, bandFor, verdictFor } from "../public/lib/scoring.js";
 import { HEADLINES, QUESTIONS, FACTORS } from "../public/lib/config.js";
-import { FACTOR_COPY } from "../src/report-copy.js";
+import { FACTOR_COPY, OVERALL_STATEMENTS } from "../src/report-copy.js";
+import { VERDICTS } from "../public/lib/config.js";
 
 const all = (i) => Array(15).fill(i);
 
@@ -84,5 +85,12 @@ test("free headlines are the first sentence of Kelli's full paragraphs", () => {
     for (const band of ["High", "Medium", "Low"]) {
       assert.ok(FACTOR_COPY[f.key][band].startsWith(HEADLINES[f.key][band] + " "), `${f.key} ${band}`);
     }
+  }
+});
+
+test("every verdict has an overall statement, with no em dashes", () => {
+  for (const v of VERDICTS) {
+    assert.ok(OVERALL_STATEMENTS[v.name], v.name);
+    assert.ok(!OVERALL_STATEMENTS[v.name].includes(String.fromCharCode(0x2014)));
   }
 });

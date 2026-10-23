@@ -30,6 +30,18 @@ export const FACTOR_COPY = {
   },
 };
 
+// The overall statement in the report email, one per verdict.
+// DRAFT: written from Kelli's scoring sheet ("Move forward", "Potential, with
+// gaps", "Something fundamental is missing") for Kelli to edit.
+export const OVERALL_STATEMENTS = {
+  "Lean In":
+    "Move forward. Your niche holds up across the five factors that matter: commercial value, reach, experience, enjoyment and demand. That does not make it perfect, and the reads below show where it is thinner. But the foundations are there, and more deliberating will not make them stronger. Commit to it in public. Say who you serve on your website and on LinkedIn, and start turning the gaps into proof. Focus compounds, and the sooner you start, the sooner it pays.",
+  Sharpen:
+    "There is potential here, with gaps. Your niche has real strengths, but at least one factor is holding it back, and that is where your attention goes first. Don't abandon the niche and don't commit to it blindly. Find your lowest scoring factor below, decide what evidence would move it, and go and get that evidence: conversations with clients in the niche, a closer look at the numbers, a test of where the audience gathers. Then run the Diagnostic again.",
+  Reconsider:
+    "Something fundamental is missing. That is not a judgement on you or on the idea. It is a read on the evidence you have today. Committing your marketing, pricing and time to this niche now carries more risk than it needs to. Read the factors below and find the weakest. Ask whether it can realistically change, or whether a related niche, one where you already have more experience, demand or enjoyment, would serve you better. A pause now saves a costly change of direction later.",
+};
+
 // Wording for the report email. DRAFT lines were written for the build;
 // Kelli to check.
 export const EMAIL_COPY = {
@@ -43,6 +55,8 @@ export const EMAIL_COPY = {
   nicheLabel: "Your niche",
   // DRAFT
   overallLabel: "Overall score",
+  // DRAFT
+  overallStatementLabel: "What this means for your niche",
   // DRAFT
   breakdownLabel: "Your answers",
   // DRAFT

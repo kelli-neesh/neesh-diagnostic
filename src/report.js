@@ -2,7 +2,7 @@
 // Email-safe HTML: tables, inline styles, no scripts, no SVG.
 import { FACTORS, QUESTIONS, COPY } from "../public/lib/config.js";
 import { scoreAnswers } from "../public/lib/scoring.js";
-import { FACTOR_COPY, EMAIL_COPY } from "./report-copy.js";
+import { FACTOR_COPY, EMAIL_COPY, OVERALL_STATEMENTS } from "./report-copy.js";
 
 const C = {
   wine: "#640718",
@@ -107,6 +107,10 @@ export function buildReport(input) {
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${factorRows}</table>
       </td>
     </tr></table>
+    <div style="margin-top:24px;padding:20px 22px;background:${C.bg};border-radius:12px">
+      <p style="margin:0 0 8px;font:700 12px/1 ${FONT};letter-spacing:.12em;text-transform:uppercase;color:${C.muted}">${escapeHtml(EMAIL_COPY.overallStatementLabel)}</p>
+      <p style="margin:0;font:400 16px/1.6 ${FONT};color:${C.ink}">${escapeHtml(OVERALL_STATEMENTS[s.verdict.name])}</p>
+    </div>
   </td></tr>
   ${factorSections}
   <tr><td style="padding:28px 0 0">
@@ -133,6 +137,9 @@ export function buildReport(input) {
     `${EMAIL_COPY.nicheLabel}: "${niche}"`,
     "",
     `${EMAIL_COPY.overallLabel}: ${s.overall}%. ${s.verdict.name}. ${s.verdict.line}`,
+    "",
+    `${EMAIL_COPY.overallStatementLabel}:`,
+    OVERALL_STATEMENTS[s.verdict.name],
     "",
     ...s.factors.flatMap((f) => {
       const def = FACTORS.find((x) => x.key === f.key);

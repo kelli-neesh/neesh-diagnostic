@@ -75,6 +75,9 @@ test("submit sends the full payload to GHL, email never in the results link", as
   // The full paragraphs and the question breakdown are in the report
   assert.ok(p.report_html.includes("Experience is underweight. You lack the depth"));
   assert.ok(p.report_html.includes("Q15."));
+  // The overall statement for the verdict is in the report
+  assert.ok(p.report_html.includes("There is potential here, with gaps."));
+  assert.ok(p.report_text.includes("There is potential here, with gaps."));
   // Points per answer stay private
   assert.ok(!/points/i.test(p.report_html));
   assert.ok(!/points/i.test(p.report_text));

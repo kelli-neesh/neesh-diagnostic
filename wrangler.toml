@@ -15,7 +15,7 @@ run_worker_first = ["/api/*"]
 
 [vars]
 # Where "Book Your Results Call" goes (GHL booking calendar link). Empty for now.
-BOOKING_URL = ""
+BOOKING_URL = "https://api.leadconnectorhq.com/widget/booking/dyHtlPH9B27bx5j0iy1U"
 # The Neesh privacy policy page.
 PRIVACY_URL = "https://neesh.agency/privacy"
 # The address the results links in emails start with. Leave empty to use the
