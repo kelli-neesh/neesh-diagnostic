@@ -117,7 +117,7 @@ export const HEADLINES = {
 export const QUESTIONS = [
   {
     n: 1,
-    text: "Do businesses in your chosen niche typically have the means and willingness to invest in professional advice?",
+    text: "Can businesses in your niche afford good advice, and are they willing to pay for it?",
     answers: [
       "Yes. The financial stakes are high enough that good advice is genuinely valued and paid for.",
       "Generally yes, though price sensitivity varies across the niche.",
@@ -127,7 +127,7 @@ export const QUESTIONS = [
   },
   {
     n: 2,
-    text: "Does working with this niche give you the opportunity to move beyond compliance into genuine advisory work?",
+    text: "Can you offer this niche more than compliance work, such as advice and planning?",
     answers: [
       "Yes. The decisions they face create natural opportunities for strategic advice.",
       "Sometimes. There are advisory opportunities but they're not consistent across all clients.",
@@ -137,17 +137,17 @@ export const QUESTIONS = [
   },
   {
     n: 3,
-    text: "How does your pricing power compare when serving this niche versus a general client base?",
+    text: "Compared with general clients, how much can you charge this niche?",
     answers: [
-      "Stronger. Specialism commands a premium and clients accept it because the value is clear.",
-      "Slightly stronger, though I haven't yet fully tested what the market will pay.",
-      "Similar. I haven't found a way to command a premium yet.",
-      "Weaker. Price sensitivity in this niche makes it harder to charge appropriately.",
+      "More. Specialism commands a premium and clients accept it because the value is clear.",
+      "A little more, though I haven't yet fully tested what the market will pay.",
+      "About the same. I haven't found a way to command a premium yet.",
+      "Less. Price sensitivity in this niche makes it harder to charge appropriately.",
     ],
   },
   {
     n: 4,
-    text: "Does your chosen niche have existing communities, associations, events or publications you could show up in?",
+    text: "Does your niche have places where people already gather, such as groups, events or magazines?",
     answers: [
       "Yes. There are active spaces where this audience already gathers and conversations already happen.",
       "Some. There are spaces but they're not particularly active or easy to access.",
@@ -157,7 +157,7 @@ export const QUESTIONS = [
   },
   {
     n: 5,
-    text: "How straightforward would it be to get in front of your target niche without relying on referrals?",
+    text: "How easy would it be to reach this niche without relying on referrals?",
     answers: [
       "Straightforward. There are clear channels, events and communities I could build presence in.",
       "Possible but it would take time and experimentation to find what works.",
@@ -167,7 +167,7 @@ export const QUESTIONS = [
   },
   {
     n: 6,
-    text: "Are other professional services already serving this niche, creating referral networks you could become part of?",
+    text: "Are there other professionals, such as lawyers or consultants, already serving this niche who could refer clients to you?",
     answers: [
       "Yes. Lawyers, advisers or consultants already serve this group and referral relationships would be natural.",
       "Some. There are adjacent professionals but the networks aren't well established.",
@@ -177,7 +177,7 @@ export const QUESTIONS = [
   },
   {
     n: 7,
-    text: "How familiar are you with the way businesses in your chosen niche actually operate day to day?",
+    text: "How well do you know how businesses in your niche run day to day?",
     answers: [
       "I understand the patterns, pressures and decisions they face without needing them explained.",
       "I have reasonable familiarity but there are gaps I'm still filling.",
@@ -187,7 +187,7 @@ export const QUESTIONS = [
   },
   {
     n: 8,
-    text: "How does your experience in this niche compare to a generalist accountant approaching the same client?",
+    text: "How does your experience of this niche compare with a general accountant's?",
     answers: [
       "Meaningfully better. I understand the context, the language and the common mistakes.",
       "Somewhat better in areas I've focused on, less so in others.",
@@ -197,7 +197,7 @@ export const QUESTIONS = [
   },
   {
     n: 9,
-    text: "When a client in your chosen niche describes a problem, how quickly can you add value?",
+    text: "When a client in your niche describes a problem, how quickly can you help?",
     answers: [
       "Immediately. I recognise the problem and know where to start without needing context.",
       "Fairly quickly, though some problems still require more background than I'd like.",
@@ -207,7 +207,7 @@ export const QUESTIONS = [
   },
   {
     n: 10,
-    text: "How do you feel after a working session focused on clients in this niche?",
+    text: "How do you feel after working with clients in this niche?",
     answers: [
       "Energised. The work is genuinely interesting and the conversations leave me thinking.",
       "Generally good. There are moments of real engagement even if it's not always stimulating.",
@@ -217,7 +217,7 @@ export const QUESTIONS = [
   },
   {
     n: 11,
-    text: "How naturally does curiosity about this niche show up for you outside of client work?",
+    text: "Outside client work, how often does this niche catch your interest?",
     answers: [
       "Naturally. I find myself reading about it, noticing relevant news and thinking about it without prompting.",
       "Sometimes. Interest shows up but it's not consistent.",
@@ -227,7 +227,7 @@ export const QUESTIONS = [
   },
   {
     n: 12,
-    text: "If you were serving only this type of client for the next three years, how would that feel?",
+    text: "How would you feel about working only with this niche for the next three years?",
     answers: [
       "Good. The prospect of going deeper into this niche feels right, not limiting.",
       "Probably fine, though I have some reservations I haven't fully resolved.",
@@ -237,7 +237,7 @@ export const QUESTIONS = [
   },
   {
     n: 13,
-    text: "How many businesses fitting your niche exist in the market you intend to serve?",
+    text: "How many businesses in your niche are there in the area you want to serve?",
     answers: [
       "Enough to sustain and grow a firm. New businesses enter this space regularly.",
       "A reasonable number, though I haven't fully mapped the size of the opportunity.",
@@ -247,7 +247,7 @@ export const QUESTIONS = [
   },
   {
     n: 14,
-    text: "Is your chosen niche growing, stable, or contracting?",
+    text: "Is your niche growing, staying the same, or shrinking?",
     answers: [
       "Growing. New businesses are entering the space and demand for advice is increasing.",
       "Stable. The market isn't shrinking but it isn't expanding dramatically either.",
@@ -257,7 +257,7 @@ export const QUESTIONS = [
   },
   {
     n: 15,
-    text: "Are the problems your niche faces ongoing, or do they tend to be one-off?",
+    text: "Do businesses in your niche need help all year round, or only now and then?",
     answers: [
       "Ongoing. The complexity, regulation or growth patterns create recurring financial needs.",
       "Mostly ongoing, with some one-off elements depending on the client's stage.",
