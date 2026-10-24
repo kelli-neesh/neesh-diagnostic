@@ -28,13 +28,11 @@ RESULTS_BASE_URL = ""
 
 # The anonymous stats store (Cloudflare D1). One row per completed Diagnostic:
 # the 15 answers and the date, nothing else. Rows are kept forever.
-# Until this is switched on, the app works normally and simply doesn't count.
-# To switch on: create a D1 database called neesh-diagnostic-stats in
-# Cloudflare, then put its Database ID below and remove the # signs.
-# [[d1_databases]]
-# binding = "STATS_DB"
-# database_name = "neesh-diagnostic-stats"
-# database_id = "PASTE-THE-DATABASE-ID-HERE"
+# Created in Cloudflare (Storage & Databases, D1) on 24/10/2026.
+[[d1_databases]]
+binding = "STATS_DB"
+database_name = "neesh-diagnostic-stats"
+database_id = "09d165a9-16ff-4f6f-97a9-7c9d18d78f16"
 
 # The private stats page is /stats?key=... and the key is a secret,
 # never put it in this file. In Cloudflare: Workers & Pages, neesh-diagnostic,

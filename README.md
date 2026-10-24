@@ -121,7 +121,7 @@ Scores, bands and verdicts are worked out from the stored answers each time the 
 
 Any browser that has opened the stats page is left out of the counting from then on, so your own test runs don't skew the numbers. Results links that are reopened are not counted again.
 
-To switch it on (once): create the D1 database in Cloudflare and put its Database ID in `wrangler.toml` (the `[[d1_databases]]` block), and add a secret called `STATS_KEY` (Workers & Pages, neesh-diagnostic, Settings, Variables and Secrets). Until both are done, the Diagnostic works normally and simply doesn't count.
+The D1 database is connected in `wrangler.toml` (the `[[d1_databases]]` block). The page key is a secret called `STATS_KEY` (Workers & Pages, neesh-diagnostic, Settings, Variables and Secrets). Without the key set, the page stays locked but counting still happens.
 
 ## Wording to check
 
