@@ -23,7 +23,9 @@ The full paragraphs live only on the server (`src/report-copy.js`), so they neve
 | `src/report-copy.js` | Kelli's full factor paragraphs and the email wording |
 | `public/index.html`, `public/app.js`, `public/styles.css` | The page |
 | `public/neesh-logo-white.png` | The logo |
-| `src/worker.js` | The small server: `/api/settings` and `/api/submit` (sends to GHL) |
+| `src/worker.js` | The small server: `/api/settings`, `/api/submit` (sends to GHL), `/api/record` and `/api/stats` |
+| `src/stats.js` | The anonymous stats store and the sums for the stats page |
+| `public/stats/` | The private stats page |
 | `src/report.js` | Builds the report email |
 | `test/` | Tests (`npm test`) |
 | `wrangler.toml` | Cloudflare settings: booking link, privacy link, results address |
@@ -52,7 +54,7 @@ The verdict cut-offs and lines come from Kelli's Niche Evaluation Scoring Sheet 
 
 ## Results links
 
-The link looks like `diagnostic.neesh.agency/?r=1...`. It holds the 15 answers and the niche description (capped at 300 characters). It never holds a name or email. There is no database.
+The link looks like `diagnostic.neesh.agency/?r=1...`. It holds the 15 answers and the niche description (capped at 300 characters). It never holds a name or email.
 
 ## Publishing
 
@@ -104,6 +106,23 @@ To try it on your own computer: `npm install`, `npm run dev`, then open http://l
 7. **Follow-up emails**: only add the contact to marketing or nurture emails when `marketing_consent` is true.
 8. **Booking calendar**: put its link in `BOOKING_URL` in `wrangler.toml` and publish again.
 
+## The private stats page
+
+Every completed Diagnostic is counted anonymously, whether or not the person asks for the report. The only things kept are the 15 answers and the date: no name, no email, no niche description. They live in a Cloudflare D1 database called `neesh-diagnostic-stats`, and nothing in the app ever deletes them.
+
+The page is `diagnostic.neesh.agency/stats?key=YOUR_KEY`. Without the right key it shows nothing. It has:
+
+- How many have completed it, the average score, and the first and latest dates
+- A shareable statement written from the numbers each time it loads, with a button for other angles and a copy button
+- A doughnut for the verdicts, each of the five factors (Low, Medium, High) and every question (the four answers)
+- A CSV download of every stored result, as your own backup
+
+Scores, bands and verdicts are worked out from the stored answers each time the page loads, using the rules in `public/lib/config.js`. Change a cut-off and the whole history is recalculated under the new rules.
+
+Any browser that has opened the stats page is left out of the counting from then on, so your own test runs don't skew the numbers. Results links that are reopened are not counted again.
+
+To switch it on (once): create the D1 database in Cloudflare and put its Database ID in `wrangler.toml` (the `[[d1_databases]]` block), and add a secret called `STATS_KEY` (Workers & Pages, neesh-diagnostic, Settings, Variables and Secrets). Until both are done, the Diagnostic works normally and simply doesn't count.
+
 ## Wording to check
 
 Lines marked `DRAFT` in `public/lib/config.js` and `src/report-copy.js` were written for the build because the brief didn't supply them: the intro screen, the niche hint, the "Get your full report" box, the follow-up consent line, and the email subject, greeting and labels.
@@ -111,6 +130,7 @@ Lines marked `DRAFT` in `public/lib/config.js` and `src/report-copy.js` were wri
 ## Good to know
 
 - **No analytics, no cookies.** The only third party loaded is Google Fonts.
-- **Nothing is stored.** Names and emails pass straight through to GHL.
+- **Names and emails are never stored.** They pass straight through to GHL.
+- **Anonymous stats are kept forever.** See below.
 - **Bots:** a hidden form field catches simple bots. There is no rate limit, as nothing costs money per submission.
 - **The report can only be unlocked by email.** Because the report is built on the server and sent to GHL, it can't be revealed by editing the link.

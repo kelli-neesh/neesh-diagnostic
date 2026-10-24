@@ -1,0 +1,62 @@
+/* Stats page only. Builds on /styles.css. */
+.wrap.wide { max-width: 1120px; }
+
+.stats-head { display: flex; flex-direction: column; gap: 10px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+.kpi { padding: 18px 20px; background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; display: flex; flex-direction: column; gap: 4px; }
+.kpi .v { font-family: var(--display); font-size: 48px; line-height: .95; color: var(--wine); font-variant-numeric: tabular-nums; }
+.kpi .l { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.kpi .v.date { font-size: 30px; line-height: 1.1; }
+
+.early { padding: 12px 16px; border-radius: 12px; background: #FFF3E6; border: 1.5px solid #F4C9A0; font-size: 15px; }
+
+.statement { padding: 24px; border-radius: 20px; background: var(--forest); color: #fff; display: flex; flex-direction: column; gap: 14px; }
+.statement .lab { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #CFE0C8; }
+.statement blockquote { margin: 0; font-size: clamp(19px, 2.6vw, 23px); line-height: 1.45; font-weight: 600; }
+.statement .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.statement .btn { min-height: 46px; padding: 0 20px; font-size: 16px; }
+.statement .btn.light { background: var(--lime); border-color: var(--lime); color: var(--forest); }
+.statement .btn.light:hover { background: #fff; border-color: #fff; }
+.statement .btn.ghost { color: #fff; border-color: #CFE0C8; }
+.statement .btn.ghost:hover { background: rgba(255,255,255,.12); color: #fff; }
+.statement .done { font-size: 14px; color: var(--lime); font-weight: 700; }
+.statement :focus-visible { outline-color: #fff !important; }
+
+.section-h { display: flex; flex-direction: column; gap: 6px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+.grid.factors-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+
+.dcard { padding: 20px; background: var(--card); border: 1.5px solid var(--line); border-radius: 18px; display: flex; flex-direction: column; gap: 14px; }
+.dcard .eyebrow { font-size: 12px; }
+.dcard h3 { margin: 0; font-size: 17px; line-height: 1.35; font-weight: 700; color: var(--ink); }
+.dcard h3.big { font-family: var(--display); font-weight: 400; font-size: 32px; line-height: 1; color: var(--wine); }
+.dcard .body { display: flex; gap: 16px; align-items: center; }
+.dcard.q .body { flex-direction: column; align-items: stretch; }
+.dcard.q .ring { align-self: center; }
+
+.ring { flex: 0 0 auto; width: 120px; height: 120px; position: relative; }
+.ring.lg { width: 170px; height: 170px; }
+.ring svg { display: block; width: 100%; height: 100%; transform: rotate(-90deg); }
+.ring .centre { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 14px; }
+.ring .num { font-family: var(--display); font-size: 36px; line-height: .9; color: var(--wine); }
+.ring.lg .num { font-size: 50px; }
+.ring .of { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); line-height: 1.2; }
+
+.legend { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; min-width: 0; flex: 1 1 auto; font-size: 14px; }
+.legend li { display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; gap: 8px; align-items: start; }
+.legend .sw { width: 14px; height: 14px; border-radius: 4px; margin-top: 3px; }
+.legend .t { color: var(--text); line-height: 1.35; }
+.legend .t b { color: var(--ink); }
+.legend .p { font-weight: 800; font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--ink); }
+.legend .p small { font-weight: 500; color: var(--muted); font-size: 12px; margin-left: 4px; }
+
+.dcard.q .legend .t { font-size: 13px; }
+.q-avg { font-size: 14px; color: var(--muted); }
+
+.tools { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.tools .btn { min-height: 46px; font-size: 16px; }
+
+@media (max-width: 400px) {
+  .dcard .body { flex-direction: column; align-items: stretch; }
+  .dcard .ring { align-self: center; }
+}

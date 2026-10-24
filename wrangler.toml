@@ -25,3 +25,17 @@ RESULTS_BASE_URL = ""
 # Secret, never put it in this file:
 #   npx wrangler secret put GHL_WEBHOOK_URL
 # Until it is set, submissions are logged instead of sent, and the app still works.
+
+# The anonymous stats store (Cloudflare D1). One row per completed Diagnostic:
+# the 15 answers and the date, nothing else. Rows are kept forever.
+# Until this is switched on, the app works normally and simply doesn't count.
+# To switch on: create a D1 database called neesh-diagnostic-stats in
+# Cloudflare, then put its Database ID below and remove the # signs.
+# [[d1_databases]]
+# binding = "STATS_DB"
+# database_name = "neesh-diagnostic-stats"
+# database_id = "PASTE-THE-DATABASE-ID-HERE"
+
+# The private stats page is /stats?key=... and the key is a secret,
+# never put it in this file. In Cloudflare: Workers & Pages, neesh-diagnostic,
+# Settings, Variables and Secrets, add a Secret called STATS_KEY.

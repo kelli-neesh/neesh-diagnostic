@@ -288,8 +288,23 @@ function go(step) {
   focusMain("#h");
 }
 
+// Counts this completion in the anonymous stats. Only the answers are kept;
+// the Worker drops the niche description. Skipped on any browser that has
+// opened the stats page, so Kelli's own test runs don't skew the numbers.
+function recordForStats(token) {
+  if (PREVIEW) return;
+  try { if (localStorage.getItem("neesh-stats-exclude") === "1") return; } catch { /* storage blocked: still count */ }
+  fetch("/api/record", {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ token }),
+    keepalive: true,
+  }).catch(() => { /* stats are best-effort; never get in the visitor's way */ });
+}
+
 function finish() {
   state.token = encodeToken(state.answers, state.niche);
+  recordForStats(state.token);
   const url = new URL(location.href);
   url.searchParams.set("r", state.token);
   try { history.pushState({ r: state.token }, "", url); } catch { /* preview frames can block this */ }

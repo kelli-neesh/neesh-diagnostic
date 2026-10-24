@@ -3,10 +3,16 @@
 //   GET  /api/settings   the public links the page needs (booking, privacy)
 //   POST /api/submit     { token, first_name, email, marketing_consent, email_corrected }
 //                        builds the full report and sends it to GHL
-// Nothing is stored here. The only place a name or email goes is GHL.
+//   POST /api/record     { token } stores the 15 answers of a completed
+//                        Diagnostic, anonymously, for the stats page
+//   GET  /api/stats?key=          aggregate stats (private, needs STATS_KEY)
+//   GET  /api/stats/export?key=   every stored row as CSV (private)
+// Names and emails are never stored here. The only place they go is GHL.
+// The stats store keeps only answers and a date. See src/stats.js.
 
 import { decodeToken, encodeToken } from "../public/lib/token.js";
 import { buildReport } from "./report.js";
+import { recordCompletion, readCompletions, aggregate, toCsv, keyMatches } from "./stats.js";
 
 const MAX_BODY_BYTES = 4096;
 const WEBHOOK_TIMEOUT_MS = 8000;
@@ -104,6 +110,38 @@ export async function handleSubmit(request, env) {
   return json({ ok: true, delivered: true });
 }
 
+export async function handleRecord(request, env) {
+  const raw = await request.text();
+  if (raw.length > MAX_BODY_BYTES) return json({ error: "Too large" }, 413);
+  let body;
+  try { body = JSON.parse(raw); } catch { return json({ error: "Bad request" }, 400); }
+  let decoded;
+  try { decoded = decodeToken(body.token); } catch { return json({ error: "Bad request" }, 400); }
+  if (!env.STATS_DB) return json({ ok: true, stored: false });
+  // Only the answers are kept. The niche description is dropped here.
+  await recordCompletion(env.STATS_DB, decoded.answers);
+  return json({ ok: true, stored: true });
+}
+
+export async function handleStats(request, env, url) {
+  if (!env.STATS_KEY || !keyMatches(url.searchParams.get("key"), env.STATS_KEY)) {
+    return json({ error: "This link isn't valid." }, 403);
+  }
+  if (!env.STATS_DB) return json({ error: "The stats store isn't connected yet." }, 503);
+  const rows = await readCompletions(env.STATS_DB);
+  if (url.pathname === "/api/stats/export") {
+    const day = new Date().toISOString().slice(0, 10);
+    return new Response(toCsv(rows), {
+      headers: {
+        "content-type": "text/csv; charset=utf-8",
+        "content-disposition": `attachment; filename="neesh-diagnostic-results-${day}.csv"`,
+        "cache-control": "no-store",
+      },
+    });
+  }
+  return json(aggregate(rows));
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -112,6 +150,8 @@ export default {
         return json({ booking_url: env.BOOKING_URL || "", privacy_url: env.PRIVACY_URL || "" });
       }
       if (url.pathname === "/api/submit" && request.method === "POST") return await handleSubmit(request, env);
+      if (url.pathname === "/api/record" && request.method === "POST") return await handleRecord(request, env);
+      if ((url.pathname === "/api/stats" || url.pathname === "/api/stats/export") && request.method === "GET") return await handleStats(request, env, url);
       if (url.pathname.startsWith("/api/")) return json({ error: "Not found" }, 404);
       return env.ASSETS.fetch(request);
     } catch (e) {
